@@ -218,7 +218,16 @@
     }
     .news-item:last-child { border-bottom: none; }
     .news-date { font-size: .76rem; color: var(--muted); white-space: nowrap; flex-shrink: 0; min-width: 62px; margin-top: 2px; }
-    .news-text { font-size: .86rem; }
+    .news-text { font-size: .86rem; flex: 1; }
+    .news-link-badge {
+      display: inline-flex; align-items: center; gap: .25rem;
+      padding: .15rem .6rem; border-radius: 999px;
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--secondary); font-size: .72rem; font-weight: 600;
+      text-decoration: none; white-space: nowrap; flex-shrink: 0;
+      transition: all .2s; margin-top: 1px;
+    }
+    .news-link-badge:hover { background: var(--secondary); color: #fff; border-color: var(--secondary); }
 
     /* ── PATENT ── */
     .patent-item { display: flex; gap: .75rem; font-size: .875rem; }
@@ -755,27 +764,33 @@
       <div class="section-title"><i class="fas fa-bullhorn"></i> Interviews &amp; News</div>
       <div class="news-item">
         <span class="news-date">2023.05</span>
-        <span class="news-text"><a href="https://www.skku.edu/skku/research/industry/StudentChallenge_view.do?mode=view&articleNo=106120&article.offset=0&articleLimit=9&srSearchVal=%EC%9C%A0%EC%97%B0%EC%A0%95&srSearchKey=name" target="_blank" rel="noopener">SKKU Student Success Study</a></span>
+        <span class="news-text">SKKU Student Success Study</span>
+        <a href="https://www.skku.edu/skku/research/industry/StudentChallenge_view.do?mode=view&articleNo=106120&article.offset=0&articleLimit=9&srSearchVal=%EC%9C%A0%EC%97%B0%EC%A0%95&srSearchKey=name" target="_blank" rel="noopener" class="news-link-badge"><i class="fas fa-external-link-alt"></i> Link</a>
       </div>
       <div class="news-item">
         <span class="news-date">2023.04</span>
-        <span class="news-text"><a href="https://www.skku.edu/skkuzine/section/people01.do?articleNo=105646&pager.offset=40&pagerLimit=10" target="_blank" rel="noopener">SKKU Webzine Issue-514 — "Nature Nanotechnology first author, Yeon Jeong Yoo"</a></span>
+        <span class="news-text">SKKU Webzine Issue-514 — "Nature Nanotechnology first author, Yeon Jeong Yoo"</span>
+        <a href="https://www.skku.edu/skkuzine/section/people01.do?articleNo=105646&pager.offset=40&pagerLimit=10" target="_blank" rel="noopener" class="news-link-badge"><i class="fas fa-external-link-alt"></i> Link</a>
       </div>
       <div class="news-item">
         <span class="news-date">2023.02</span>
-        <span class="news-text"><a href="https://www.skku.edu/skku/campus/skk_comm/news.do?mode=view&articleNo=104232&article.offset=0&articleLimit=10" target="_blank" rel="noopener">SKKU News — "Asan Foundation Scholarship, Yeon Jeong Yoo"</a></span>
+        <span class="news-text">SKKU News — "Asan Foundation Scholarship, Yeon Jeong Yoo"</span>
+        <a href="https://www.skku.edu/skku/campus/skk_comm/news.do?mode=view&articleNo=104232&article.offset=0&articleLimit=10" target="_blank" rel="noopener" class="news-link-badge"><i class="fas fa-external-link-alt"></i> Link</a>
       </div>
       <div class="news-item">
         <span class="news-date">2023.12</span>
-        <span class="news-text"><a href="https://webzine.skku.edu/skkuzine/section/people01.do?mode=list&articleNo=105646" target="_blank" rel="noopener">SKKU Research Stories</a></span>
+        <span class="news-text">SKKU Research Stories</span>
+        <a href="https://webzine.skku.edu/skkuzine/section/people01.do?mode=list&articleNo=105646" target="_blank" rel="noopener" class="news-link-badge"><i class="fas fa-external-link-alt"></i> Link</a>
       </div>
       <div class="news-item">
         <span class="news-date">2023.01</span>
-        <span class="news-text"><a href="https://www.skku.edu/skku/research/industry/researchStory_view.do?mode=view&articleNo=103211&article.offset=0&articleLimit=10" target="_blank" rel="noopener">SKKU Research Stories — Nature Nanotechnology feature</a></span>
+        <span class="news-text">SKKU Research Stories — Nature Nanotechnology feature</span>
+        <a href="https://www.skku.edu/skku/research/industry/researchStory_view.do?mode=view&articleNo=103211&article.offset=0&articleLimit=10" target="_blank" rel="noopener" class="news-link-badge"><i class="fas fa-external-link-alt"></i> Link</a>
       </div>
       <div class="news-item">
         <span class="news-date">2021.09</span>
-        <span class="news-text"><a href="https://www.skku.edu/skku/research/industry/researchStory_view.do?mode=view&articleNo=92705&article.offset=0&articleLimit=10" target="_blank" rel="noopener">SKKU Research Stories</a></span>
+        <span class="news-text">SKKU Research Stories</span>
+        <a href="https://www.skku.edu/skku/research/industry/researchStory_view.do?mode=view&articleNo=92705&article.offset=0&articleLimit=10" target="_blank" rel="noopener" class="news-link-badge"><i class="fas fa-external-link-alt"></i> Link</a>
       </div>
     </section>
   </div>
