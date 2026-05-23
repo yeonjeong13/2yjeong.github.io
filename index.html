@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yeon Jeong Yoo – Ph.D. Researcher in Nanomedicine and Cancer Immunotherapy" />
+  <title>Yeon Jeong Yoo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:   #1a3a5c;
+      --secondary: #2563eb;
+      --accent:    #059669;
+      --bg:        #f1f5f9;
+      --card:      #ffffff;
+      --text:      #1e293b;
+      --muted:     #64748b;
+      --border:    #e2e8f0;
+      --shadow:    0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.06);
+      --shadow-h:  0 4px 16px rgba(0,0,0,.12), 0 8px 24px rgba(0,0,0,.08);
+      --radius:    14px;
+      --max:       1080px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto;
+      height: 58px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-name {
+      font-weight: 700; font-size: 1rem; color: var(--primary); text-decoration: none;
+      letter-spacing: -.01em;
+    }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: .825rem; font-weight: 500; transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--secondary); }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: var(--max); margin: 0 auto;
+      padding: 2rem 1.25rem;
+      display: grid; gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--card); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 1.75rem 2rem;
+      transition: box-shadow .2s;
+    }
+    .card:hover { box-shadow: var(--shadow-h); }
+
+    .section-title {
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--primary);
+      display: flex; align-items: center; gap: .5rem;
+      margin-bottom: 1.25rem;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ── HERO ── */
+    .hero { display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; }
+
+    .avatar {
+      width: 110px; height: 110px; border-radius: 50%;
+      background: linear-gradient(135deg, #1a3a5c 0%, #2563eb 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.4rem; font-weight: 700; color: #fff; flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(37,99,235,.35);
+    }
+
+    .hero-info h1 {
+      font-size: 1.9rem; font-weight: 700; color: var(--primary);
+      line-height: 1.2; margin-bottom: .2rem;
+    }
+    .hero-pos  { color: var(--muted); font-size: .9rem; margin-bottom: .3rem; }
+    .hero-aff  { font-size: .875rem; color: var(--text); margin-bottom: 1rem; }
+
+    .hero-links { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .hero-link {
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .3rem .85rem; border-radius: 999px;
+      background: var(--bg); color: var(--text);
+      text-decoration: none; font-size: .8rem; font-weight: 500;
+      border: 1px solid var(--border); transition: all .2s;
+    }
+    .hero-link:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* ── RESEARCH INTERESTS ── */
+    .interest-list { display: flex; flex-direction: column; gap: .55rem; }
+    .interest-item { display: flex; gap: .6rem; align-items: flex-start; }
+    .interest-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0; margin-top: .58rem;
+    }
+    .interest-item span { font-size: .875rem; }
+
+    /* ── PUBLICATIONS ── */
+    .pub-tabs { display: flex; gap: .5rem; margin-bottom: 1.25rem; }
+    .pub-tab {
+      padding: .35rem 1.1rem; border-radius: 999px;
+      border: 1.5px solid var(--border); background: transparent;
+      color: var(--muted); font-size: .8rem; font-weight: 600;
+      cursor: pointer; transition: all .2s;
+    }
+    .pub-tab.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+    .pub-content { display: none; flex-direction: column; gap: 1.1rem; }
+    .pub-content.active { display: flex; }
+
+    .pub-item {
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.1rem 1.25rem; transition: border-color .2s, box-shadow .2s;
+    }
+    .pub-item:hover { border-color: var(--secondary); box-shadow: 0 2px 10px rgba(37,99,235,.08); }
+
+    .pub-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: .4rem; }
+    .pub-title { font-weight: 600; font-size: .9rem; line-height: 1.45; color: var(--text); }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: .2rem;
+      padding: .2rem .75rem; border-radius: 999px;
+      font-size: .7rem; font-weight: 700; white-space: nowrap; flex-shrink: 0;
+    }
+    .badge-gold   { background: #fef3c7; color: #92400e; }
+    .badge-blue   { background: #dbeafe; color: #1d4ed8; }
+    .badge-green  { background: #d1fae5; color: #065f46; }
+
+    .pub-authors { font-size: .8rem; color: var(--muted); margin: .25rem 0; }
+    .pub-authors strong { color: var(--primary); font-weight: 600; }
+    .pub-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .4rem; margin-top: .4rem; }
+    .pub-journal { font-size: .8rem; color: var(--muted); font-style: italic; }
+    .pub-year    { font-size: .78rem; color: var(--muted); font-weight: 500; }
+    .pub-note    { font-size: .76rem; color: var(--accent); margin-top: .3rem; display: flex; align-items: flex-start; gap: .3rem; }
+
+    /* ── TIMELINE (Education) ── */
+    .timeline { display: flex; flex-direction: column; }
+    .tl-item  { display: grid; grid-template-columns: 18px 1fr; gap: .9rem; }
+    .tl-left  { display: flex; flex-direction: column; align-items: center; }
+    .tl-dot   { width: 12px; height: 12px; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 4px; }
+    .tl-dot.current { background: var(--accent); box-shadow: 0 0 0 3px rgba(5,150,105,.2); }
+    .tl-line  { width: 2px; flex: 1; background: var(--border); margin: 3px 0; }
+    .tl-body  { padding-bottom: 1.5rem; }
+    .tl-row   { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .2rem; margin-bottom: .15rem; }
+    .tl-inst  { font-weight: 600; color: var(--primary); font-size: .9rem; }
+    .tl-loc   { font-size: .78rem; color: var(--muted); font-style: italic; }
+    .tl-deg   { font-size: .85rem; color: var(--text); font-style: italic; }
+    .tl-per   { font-size: .78rem; color: var(--muted); font-weight: 500; }
+    .tl-detail{ font-size: .8rem; color: var(--muted); margin-top: .25rem; line-height: 1.5; }
+
+    /* ── AWARDS / SCHOLARSHIPS ── */
+    .award-list { display: flex; flex-direction: column; gap: .7rem; }
+    .award-item { display: flex; gap: .75rem; align-items: flex-start; font-size: .86rem; }
+    .award-year { font-weight: 700; color: var(--accent); width: 36px; flex-shrink: 0; }
+
+    /* ── PROJECTS ── */
+    .proj-item {
+      border: 1px solid var(--border); border-radius: 9px;
+      padding: .9rem 1.1rem; margin-bottom: .75rem;
+    }
+    .proj-item:last-child { margin-bottom: 0; }
+    .proj-title { font-weight: 600; font-size: .875rem; margin-bottom: .3rem; line-height: 1.4; }
+    .proj-meta  { font-size: .78rem; color: var(--muted); display: flex; gap: 1rem; flex-wrap: wrap; }
+    .proj-role  { color: var(--accent); font-weight: 700; }
+
+    /* ── CONFERENCES ── */
+    .conf-item { border-left: 3px solid var(--secondary); padding-left: 1rem; margin-bottom: 1.1rem; }
+    .conf-item:last-child { margin-bottom: 0; }
+    .conf-name  { font-weight: 700; font-size: .9rem; color: var(--primary); }
+    .conf-date  { font-size: .77rem; color: var(--muted); margin-bottom: .2rem; }
+    .conf-paper { font-size: .82rem; font-style: italic; color: var(--text); }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: flex; flex-direction: column; gap: 1.1rem; }
+    .skill-cat-title {
+      font-size: .72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--muted); margin-bottom: .45rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .skill-tag {
+      padding: .22rem .7rem; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 999px;
+      font-size: .78rem; color: var(--text);
+    }
+
+    /* ── NEWS ── */
+    .news-item {
+      display: flex; gap: .75rem; align-items: flex-start;
+      padding: .55rem 0; border-bottom: 1px solid var(--border);
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-date { font-size: .76rem; color: var(--muted); white-space: nowrap; flex-shrink: 0; min-width: 62px; margin-top: 2px; }
+    .news-text { font-size: .86rem; }
+
+    /* ── PATENT ── */
+    .patent-item { display: flex; gap: .75rem; font-size: .875rem; }
+    .patent-num  { font-weight: 700; color: var(--accent); flex-shrink: 0; }
+
+    /* ── TWO-COL ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2rem 1rem;
+      color: var(--muted); font-size: .78rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 660px) {
+      .hero { grid-template-columns: 1fr; }
+      .avatar { width: 80px; height: 80px; font-size: 1.8rem; }
+      .hero-info h1 { font-size: 1.5rem; }
+      .two-col { grid-template-columns: 1fr; }
+      .pub-header { flex-direction: column; }
+      .nav-links li:nth-child(n+5) { display: none; }
+      .card { padding: 1.25rem 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ════════════════════  NAV  ════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-name">Yeon Jeong Yoo</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ════════════════════  MAIN  ════════════════════ -->
+<main>
+
+  <!-- ── HERO ── -->
+  <section id="about" class="card">
+    <div class="hero">
+      <div class="avatar">YJ</div>
+      <div class="hero-info">
+        <h1>Yeon Jeong Yoo</h1>
+        <p class="hero-pos">Ph.D. Researcher · Samsung Medical Center</p>
+        <p class="hero-aff">
+          Lab for Immune Modulation (LIM) &nbsp;·&nbsp;
+          Advanced Institute of Nanotechnology (SAINT)<br>
+          Sungkyunkwan University
+        </p>
+        <div class="hero-links">
+          <a href="mailto:21aura@naver.com" class="hero-link">
+            <i class="fas fa-envelope"></i> 21aura@naver.com
+          </a>
+          <a href="https://bit.ly/YeonJeong" class="hero-link" target="_blank" rel="noopener">
+            <i class="fas fa-book-open"></i> Notion
+          </a>
+          <a href="https://bit.ly/YJlinkedIn" class="hero-link" target="_blank" rel="noopener">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESEARCH INTERESTS ── -->
+  <section class="card">
+    <div class="section-title"><i class="fas fa-flask"></i> Research Interests</div>
+    <div class="interest-list">
+      <div class="interest-item">
+        <div class="interest-dot"></div>
+        <span>Designing nanocarriers (liposomes or albumin-conjugated drugs) for targeting lymph nodes or the tumor microenvironment</span>
+      </div>
+      <div class="interest-item">
+        <div class="interest-dot"></div>
+        <span>Development of timely and kinetically modulating nanoparticle-based vaccines</span>
+      </div>
+      <div class="interest-item">
+        <div class="interest-dot"></div>
+        <span>Development of metabolically labeled cell therapeutics armed with TLR7/8 agonists via metabolic glycoengineering for immune microenvironment modulation</span>
+      </div>
+      <div class="interest-item">
+        <div class="interest-dot"></div>
+        <span>Development of vaccines for infectious diseases</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PUBLICATIONS ── -->
+  <section id="publications" class="card">
+    <div class="section-title"><i class="fas fa-file-alt"></i> Publications</div>
+
+    <div class="pub-tabs">
+      <button class="pub-tab active" onclick="switchPub('first', this)">First Author (5)</button>
+      <button class="pub-tab"        onclick="switchPub('co', this)">Co-Author (3)</button>
+    </div>
+
+    <!-- First Author -->
+    <div id="first-pubs" class="pub-content active">
+
+      <div class="pub-item">
+        <div class="pub-header">
+          <div class="pub-title">Multiscale dynamic immunomodulation by a nanoemulsified Trojan-TLR7/8 adjuvant for robust protection against heterologous pandemic and endemic viruses</div>
+          <span class="badge badge-gold">IF 19.8</span>
+        </div>
+        <div class="pub-authors">
+          <strong>Yeon Jeong Yoo</strong>†, Suhyeon Kim†, Asha Wickramasinghe†, Jaemoo Kim†, JuA Song, Young-Il Kim, Juryeon Gil, Young-Woock Noh, Min-Ho Lee, Sang-Seok Oh, Myeong-Mi Lee, Yebin Seong, Jong-Soo Lee*, Yong Ki Choi*, and Yong Taik Lim*
+        </div>
+        <div class="pub-footer">
+          <span class="pub-journal">Cellular and Molecular Immunology</span>
+          <span class="pub-year">2025.06</span>
+        </div>
+        <div class="pub-note"><i class="fas fa-newspaper"></i>&nbsp;Highlighted in Kyeonggi Ilbo, Newsis</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-header">
+          <div class="pub-title">Nanoengineered Macrophages Armed with TLR7/8 Agonist Enhance Remodeling of Immunosuppressive Tumor Microenvironment</div>
+          <span class="badge badge-blue">IF 13</span>
+        </div>
+        <div class="pub-authors">
+          <strong>Yeon Jeong Yoo</strong>, Ryounho Eun, Hye Min Park, Suhyeon Kim, Sei Hyun Park, Janghun Heo, and Yong Taik Lim*
+        </div>
+        <div class="pub-footer">
+          <span class="pub-journal">Small</span>
+          <span class="pub-year">2023.11</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-header">
+          <div class="pub-title">Kinetics reshape antitumor immunity: Timing, duration, and combination are of importance for successful cancer immunotherapy</div>
+          <span class="badge badge-blue">IF 10.6</span>
+        </div>
+        <div class="pub-authors">
+          Seung Mo Jin†, <strong>Yeon Jeong Yoo</strong>†, and Yong Taik Lim*
+        </div>
+        <div class="pub-footer">
+          <span class="pub-journal">Clinical and Translational Medicine</span>
+          <span class="pub-year">2023.09</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-header">
+          <div class="pub-title">A nanoadjuvant that dynamically coordinates innate immune stimuli activation enhances cancer immunotherapy and reduces immune cell exhaustion</div>
+          <span class="badge badge-gold">IF 38.1 &nbsp;★ Top 1.5%</span>
+        </div>
+        <div class="pub-authors">
+          Seung Mo Jin†, <strong>Yeon Jeong Yoo</strong>†, Hong Sik Shin, Sohyun Kim, Sang Nam Lee, Chang Hoon Lee, Hyunji Kim, Jung-Eun Kim, Yong-Soo Bae, JungHyub Hong, Young-Woock Noh, and Yong Taik Lim*
+        </div>
+        <div class="pub-footer">
+          <span class="pub-journal">Nature Nanotechnology</span>
+          <span class="pub-year">2023.01</span>
+        </div>
+        <div class="pub-note"><i class="fas fa-newspaper"></i>&nbsp;Highlighted in MediGate News, SKKU News, SKKU Research Stories, Energy Economics News, BRIC</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-header">
+          <div class="pub-title">Nanoparticle-based delivery strategies of multifaceted immunomodulatory RNA for cancer immunotherapy</div>
+          <span class="badge badge-blue">IF 10.6</span>
+        </div>
+        <div class="pub-authors">
+          <strong>Yeon Jeong Yoo</strong>†, Chang Hoon Lee†, Sei Hyun Park†, Yong Taik Lim*
+        </div>
+        <div class="pub-footer">
+          <span class="pub-journal">Journal of Controlled Release</span>
+          <span class="pub-year">2022.04</span>
+        </div>
+      </div>
+
+    </div><!-- /first-pubs -->
+
+    <!-- Co-Author -->
+    <div id="co-pubs" class="pub-content">
+
+      <div class="pub-item">
+        <div class="pub-header">
+          <div class="pub-title">Molecular Masking of Synthetic Immunomodulator Evokes Antitumor Immunity with Reduced Immune Tolerance and Systemic Toxicity by Temporal Activity Recovery and Sustained Stimulation</div>
+          <span class="badge badge-gold">IF 27.4</span>
+        </div>
+        <div class="pub-authors">
+          Hong Sik Shin†, Sohyun Kim†, Seung Mo Jin, <strong>Yeon Jeong Yoo</strong>, Jang Hun Heo, Yong Taik Lim*
+        </div>
+        <div class="pub-footer">
+          <span class="pub-journal">Advanced Materials</span>
+          <span class="pub-year">2023.10</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-header">
+          <div class="pub-title">Overcoming Chemoimmunotherapy-induced Immunosuppression by Assemble and Depot Forming Immune Modulating Nanosuspension</div>
+          <span class="badge badge-blue">IF 14.3</span>
+        </div>
+        <div class="pub-authors">
+          Seung Mo Jin†, Sang Nam Lee†, Jung Eun Kim, <strong>Yeon Jeong Yoo</strong>, Chanyoung Song, Hong Sik Shin, Hathaichanok Phuengkham, Chang Hoon Lee, Soong Ho Um, and Yong Taik Lim*
+        </div>
+        <div class="pub-footer">
+          <span class="pub-journal">Advanced Science</span>
+          <span class="pub-year">2021.08</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-header">
+          <div class="pub-title">Molecular and Macroscopic Therapeutic Systems for Cytokine-Based Cancer Immunotherapy</div>
+          <span class="badge badge-green">IF 3.7</span>
+        </div>
+        <div class="pub-authors">
+          Seung Mo Jin†, Sang Nam Lee†, <strong>Yeon Jeong Yoo</strong>, Yong Taik Lim*
+        </div>
+        <div class="pub-footer">
+          <span class="pub-journal">Advanced Therapeutics</span>
+          <span class="pub-year">2021.04</span>
+        </div>
+      </div>
+
+    </div><!-- /co-pubs -->
+  </section>
+
+  <!-- ── EDUCATION ── -->
+  <section id="education" class="card">
+    <div class="section-title"><i class="fas fa-graduation-cap"></i> Education &amp; Training</div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot current"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-row">
+            <span class="tl-inst">Samsung Medical Center</span>
+            <span class="tl-loc">Seoul, Korea</span>
+          </div>
+          <div class="tl-row">
+            <span class="tl-deg">Ph.D. Researcher</span>
+            <span class="tl-per">Aug. 2025 – Present</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-row">
+            <span class="tl-inst">Sungkyunkwan University</span>
+            <span class="tl-loc">Suwon, Korea</span>
+          </div>
+          <div class="tl-row">
+            <span class="tl-deg">Ph.D.</span>
+            <span class="tl-per">Mar. 2022 – Aug. 2025</span>
+          </div>
+          <div class="tl-detail">
+            Thesis: Engineered Immunomodulatory Platforms for Multiscale Spatiotemporal Immunomodulation in Cancer and Infectious Diseases Therapies<br>
+            Advisor: Yong Taik Lim (Ph.D.) &nbsp;·&nbsp; GPA: 4.5 / 4.5
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-row">
+            <span class="tl-inst">Sungkyunkwan University</span>
+            <span class="tl-loc">Suwon, Korea</span>
+          </div>
+          <div class="tl-row">
+            <span class="tl-deg">M.S. of Engineering in Nano Science and Technology</span>
+            <span class="tl-per">Mar. 2020 – Feb. 2022</span>
+          </div>
+          <div class="tl-detail">
+            Thesis: Liposome-Anchored Macrophages (LAMΦ)-Based Therapy Enhances Remodeling of Immunosuppressive Tumor Microenvironment<br>
+            Advisor: Yong Taik Lim (Ph.D.) &nbsp;·&nbsp; GPA: 4.04 / 4.5
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-row">
+            <span class="tl-inst">Sungkyunkwan University</span>
+            <span class="tl-loc">Suwon, Korea</span>
+          </div>
+          <div class="tl-row">
+            <span class="tl-deg">B.S. of Chemical Engineering</span>
+            <span class="tl-per">Feb. 2020</span>
+          </div>
+          <div class="tl-detail">GPA: 3.93 / 4.5</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── AWARDS  &  SCHOLARSHIPS ── -->
+  <div id="awards" class="two-col">
+    <section class="card">
+      <div class="section-title"><i class="fas fa-trophy"></i> Awards</div>
+      <div class="award-list">
+        <div class="award-item"><span class="award-year">2025</span><span>"Certificate of Excellence" as the Summer Representative for Academic Achievement</span></div>
+        <div class="award-item"><span class="award-year">2024</span><span>2nd SKKU Research Matters Plus "Encouragement Award"</span></div>
+        <div class="award-item"><span class="award-year">2023</span><span>Selected as SKKU 5th President's List</span></div>
+        <div class="award-item"><span class="award-year">2023</span><span>SKKU Graduate Student Research Paper Awards "Excellence Award"</span></div>
+        <div class="award-item"><span class="award-year">2023</span><span>Asan Foundation Scholarship Certificate</span></div>
+        <div class="award-item"><span class="award-year">2019</span><span>SKKU Capstone Design "Bronze Award"</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title"><i class="fas fa-medal"></i> Scholarships</div>
+      <div class="award-list">
+        <div class="award-item"><span class="award-year">2023</span><span>Asan Foundation Scholarship (₩20,000,000)</span></div>
+        <div class="award-item"><span class="award-year">2020</span><span>Brain Korea 21 Scholarship (₩4,427,767)</span></div>
+        <div class="award-item"><span class="award-year">2020</span><span>Simsan Scholarship (₩479,625)</span></div>
+        <div class="award-item"><span class="award-year">2019</span><span>Bachelor's &amp; Master's Linked Course Scholarship (₩4,557,000)</span></div>
+        <div class="award-item"><span class="award-year">2019</span><span>Research Credit Excellence Scholarship (₩1,000,000)</span></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ── RESEARCH PROJECTS ── -->
+  <section class="card">
+    <div class="section-title"><i class="fas fa-microscope"></i> Research Projects</div>
+
+    <div class="proj-item">
+      <div class="proj-title">Development of systemically injectable and dynamically activatable toll-like receptor 7/8 agonist based cancer immunotherapy platform</div>
+      <div class="proj-meta">
+        <span class="proj-role">Lead Researcher</span>
+        <span>2025.03 – 2025.08</span>
+        <span>NRF (2025.03 – 2028.02)</span>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <div class="proj-title">Laboratory of Dynamic Immune Modulation Engineering for Overcoming Limitation of Cancer Immunotherapy</div>
+      <div class="proj-meta">
+        <span>Researcher</span>
+        <span>NRF (2023.06 – 2026.02)</span>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <div class="proj-title">Novel Adjuvant-enabled Immune Boosting System mimicking Natural Infection</div>
+      <div class="proj-meta">
+        <span class="proj-role">Lead Researcher</span>
+        <span>2022.11 – 2024.10</span>
+        <span>IBS (2022.11 – 2024.10)</span>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <div class="proj-title">Development of nanoconvergence platform for the control of tumor microenvironment by the multiscale spatiotemporal modulation of the multifaceted activity of Toll-like receptor 7/8 agonist</div>
+      <div class="proj-meta">
+        <span class="proj-role">Lead Researcher</span>
+        <span>2023.03 – 2025.02</span>
+        <span>NRF (2020.03 – 2025.02)</span>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <div class="proj-title">Center for Immune Research on Non-lymphoid Organs (SRC)</div>
+      <div class="proj-meta">
+        <span>Researcher</span>
+        <span>NRF (2019.03 – 2024.02)</span>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <div class="proj-title">Development of Immune cell-tailored activation technologies using immune-bioengineering-based adjuvant therapeutics</div>
+      <div class="proj-meta">
+        <span>Researcher</span>
+        <span>NRF (2019.03 – 2020.08)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONFERENCES  &  TEACHING ── -->
+  <div class="two-col">
+    <section class="card">
+      <div class="section-title"><i class="fas fa-users"></i> Conferences</div>
+      <div class="conf-item">
+        <div class="conf-name">CICON 2024</div>
+        <div class="conf-date">Sep 2024</div>
+        <div class="conf-paper">"Dynamic coordination of innate immune stimuli by nanoadjuvant enhances cancer immunotherapy without immune cell exhaustion"</div>
+      </div>
+      <div class="conf-item">
+        <div class="conf-name">WBC 2024</div>
+        <div class="conf-date">May 2024</div>
+        <div class="conf-paper">"Enhancing adoptive macrophage-based cancer therapy through sustained M1 phenotype maintenance by TLR7/8 agonists"</div>
+      </div>
+      <div class="conf-item">
+        <div class="conf-name">KAI International Meeting 2023</div>
+        <div class="conf-date">Sep 2023</div>
+        <div class="conf-paper">"Engineered Macrophages Anchored with Toll-like Receptor 7/8 Agonist by Click Chemistry Enhance Antitumor Immunity"</div>
+      </div>
+      <div class="conf-item">
+        <div class="conf-name">The Polymer Society of Korea</div>
+        <div class="conf-date">April 2021</div>
+        <div class="conf-paper">"Engineered Macrophage via Click Chemistry Enhances Tumor Targeting and Remodels Immunosuppressive Tumor Microenvironment" <em>Vol. 46 No. 1</em></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title"><i class="fas fa-chalkboard-teacher"></i> Teaching &amp; Mentoring</div>
+      <div class="award-list">
+        <div class="award-item"><span class="award-year">2025</span><span>Team Leader, "SKKU Mentoring Cell" (2025.05 – 2025.08)</span></div>
+        <div class="award-item"><span class="award-year">2023</span><span>Mentor, "SKKU NANO FORUM" (2023.11.09)</span></div>
+        <div class="award-item"><span class="award-year">2023</span><span>Team Leader, "Team Research Project (TRP7005, TRP7006)" (2023.03 – 2023.12)</span></div>
+        <div class="award-item"><span class="award-year">2023</span><span>Invitation Lecturer, "BRIC of Bundang-Jungang High School Club" (2023.09.20)</span></div>
+        <div class="award-item"><span class="award-year">2023</span><span>Teaching Assistant, "Introduction of Nanobio Science (ENA2006)"</span></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ── SKILLS ── -->
+  <section id="skills" class="card">
+    <div class="section-title"><i class="fas fa-cogs"></i> Specialized Skills</div>
+    <div class="skills-grid">
+
+      <div>
+        <div class="skill-cat-title">Synthesis Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Liposomes</span>
+          <span class="skill-tag">Nanoemulsions</span>
+          <span class="skill-tag">Lipid Nanoparticles</span>
+          <span class="skill-tag">Polymeric Nanoparticles</span>
+          <span class="skill-tag">Microparticles</span>
+          <span class="skill-tag">Multi-domain Vesicles</span>
+          <span class="skill-tag">Protein / Antibody-Drug Conjugates</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-cat-title">In Vitro Analysis</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Mouse Cell Line Culture (B16OVA, 4T1, MC38, TC1 …)</span>
+          <span class="skill-tag">Human Cell Line Culture (PANC1, HEPG2 …)</span>
+          <span class="skill-tag">Primary Cell Culture (BMDC, BMDM, T cell …)</span>
+          <span class="skill-tag">Co-culture Systems</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-cat-title">In Vivo Analysis</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Mouse Tumor Modeling</span>
+          <span class="skill-tag">Multiple Injection Routes</span>
+          <span class="skill-tag">In Vivo Imaging (IVIS)</span>
+          <span class="skill-tag">Single Cell Preparation</span>
+          <span class="skill-tag">Cytokine / Protein Extraction</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-cat-title">Equipment &amp; Assays</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Flow Cytometry (BD CANTO II, Symphony A3)</span>
+          <span class="skill-tag">qRT-PCR (QuantStudio 6 Flex)</span>
+          <span class="skill-tag">ELISA / Western Blot / BCA / MTS</span>
+          <span class="skill-tag">CLSM (TCS SP8 HyVolution)</span>
+          <span class="skill-tag">DLS &amp; UV-Vis Spectrometry</span>
+          <span class="skill-tag">Magnetic Bead Cell Isolation</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-cat-title">Software</div>
+        <div class="skill-tags">
+          <span class="skill-tag">R 4.5.1 / RStudio</span>
+          <span class="skill-tag">Adobe Illustrator</span>
+          <span class="skill-tag">FlowJo</span>
+          <span class="skill-tag">ImageJ / Image Lab</span>
+          <span class="skill-tag">Prism</span>
+          <span class="skill-tag">Leica Las X</span>
+          <span class="skill-tag">MS Office / Hangul</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PATENTS  &  NEWS ── -->
+  <div class="two-col">
+    <section class="card">
+      <div class="section-title"><i class="fas fa-certificate"></i> Patents</div>
+      <div class="patent-item">
+        <span class="patent-num">1.</span>
+        <span>
+          Yong Taik Lim, Seung Mo Jin, <strong>Yeon Jeong Yoo</strong> —
+          "Kinetically Activating Adjuvant Ensemble"
+          <em>(Korea · App. No. 1020210102216)</em>
+        </span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title"><i class="fas fa-bullhorn"></i> Interviews &amp; News</div>
+      <div class="news-item">
+        <span class="news-date">2023.05</span>
+        <span class="news-text">SKKU Student Success Study</span>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2023.04</span>
+        <span class="news-text">SKKU Webzine Issue-514 — "Nature Nanotechnology first author, Yeon Jeong Yoo"</span>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2023.02</span>
+        <span class="news-text">SKKU News — "Asan Foundation Scholarship, Yeon Jeong Yoo"</span>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2023.12</span>
+        <span class="news-text">SKKU Research Stories</span>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2023.01</span>
+        <span class="news-text">SKKU Research Stories — Nature Nanotechnology feature</span>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2021.09</span>
+        <span class="news-text">SKKU Research Stories</span>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2025 Yeon Jeong Yoo &nbsp;·&nbsp; Last updated: November 2025
+</footer>
+
+<script>
+  /* Publication tab switch */
+  function switchPub(type, btn) {
+    document.querySelectorAll('.pub-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.pub-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(type + '-pubs').classList.add('active');
+  }
+
+  /* Active nav link on scroll */
+  const sections  = document.querySelectorAll('section[id], div[id]');
+  const navLinks  = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (scrollY >= s.offsetTop - 90) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }, { passive: true });
+</script>
+
+</body>
+</html>
