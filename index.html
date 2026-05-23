@@ -90,11 +90,10 @@
     .hero { display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; }
 
     .avatar {
-      width: 110px; height: 110px; border-radius: 50%;
-      background: linear-gradient(135deg, #1a3a5c 0%, #2563eb 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.4rem; font-weight: 700; color: #fff; flex-shrink: 0;
-      box-shadow: 0 4px 16px rgba(37,99,235,.35);
+      width: 120px; height: 120px; border-radius: 50%;
+      object-fit: cover; flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+      border: 3px solid var(--border);
     }
 
     .hero-info h1 {
@@ -277,7 +276,7 @@
   <!-- ── HERO ── -->
   <section id="about" class="card">
     <div class="hero">
-      <div class="avatar">YJ</div>
+      <img class="avatar" src="photo_1.jpg" alt="Yeon Jeong Yoo" />
       <div class="hero-info">
         <h1>Yeon Jeong Yoo</h1>
         <p class="hero-pos">Researcher · Alteogen Seoul Research Center</p>
